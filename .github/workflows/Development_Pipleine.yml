@@ -1,6 +1,9 @@
-name: CI Pipeline
+name: CI Pipeline_Dev
 on:
-  push:
+  pull_request:
+    branches:
+     - develop
+    types: [opened, reopened] 
   workflow_dispatch:
 env:
         DOCKER_IMAGE: ankit1111/petapp:${{ github.sha }}
