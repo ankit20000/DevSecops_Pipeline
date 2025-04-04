@@ -1,0 +1,29 @@
+name: CI Pipeline
+on:
+  pull_request:
+    branches:
+     - develop
+    types: [opened, reopened] 
+  workflow_dispatch:
+env:
+        DOCKER_IMAGE: ankit1111/petapp:${{ github.sha }}
+        MAVEN_OPTS: "-DskipTests=true"      
+
+jobs:
+  build:
+    uses: ./.github/workflows/javabuild.yml
+    secrets: inherit
+  sonar:
+     uses: ./.github/workflows/sonar.yml
+     needs: build
+     secrets: inherit     
+
+  test:
+    uses: ./.github/workflows/test.yml
+    needs: sonar
+    secrets: inherit  
+
+  imagepush:
+    uses: ./.github/workflows/imagepush.yml
+    needs: test
+    secrets: inherit  
