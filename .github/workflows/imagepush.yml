@@ -16,11 +16,6 @@ jobs:
           sudo docker build -t ${{ env.DOCKER_IMAGE }} .
           sudo docker save ${{ env.DOCKER_IMAGE }} > docker_image.tar
 
-      - name: Upload Docker Image Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: docker-image
-          path: docker_image.tar
 
       - name: Log in to DockerHub
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | sudo docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
