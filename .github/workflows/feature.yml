@@ -6,7 +6,7 @@ on:
       - develop
       
 env:
-        DOCKER_IMAGE: ankit1111/petapp:${{ github.sha }}
+        DOCKER_IMAGE: stephenshenk/spring-petclinic:${{ github.sha }}
         MAVEN_OPTS: "-DskipTests=true"      
 
 jobs:
