@@ -8,7 +8,7 @@ jobs:
   image_push:
     runs-on: java_build
     env:
-      DOCKER_IMAGE: ankit1111/petapp:${{ github.sha }}
+      DOCKER_IMAGE: stephenshenk/spring-petclinic:${{ github.sha }}
 
     steps:
       - name: Build Docker Image
