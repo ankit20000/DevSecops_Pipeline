@@ -6,7 +6,11 @@ on:
 
 jobs:
   test:
-    runs-on: java_build
+    runs-on:
+      - self-hosted
+      - Linux
+      - X64
+      - dev
     #needs: build  # Ensures test only runs after build succeeds
     steps:
       - name: Run Unit Tests

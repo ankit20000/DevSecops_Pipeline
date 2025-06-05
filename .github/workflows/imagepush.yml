@@ -1,24 +1,26 @@
-# .github/workflows/imagepush.yml
-name: Docker Image Build and Push
-
-on:
- workflow_call:
-
 jobs:
   image_push:
-    runs-on: java_build
-    env:
-      DOCKER_IMAGE: ankit1111/petapp:${{ github.sha }}
+    runs-on: self-hosted
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Build the JAR
+        run: mvn clean package
+
       - name: Build Docker Image
         run: |
-          sudo docker build -t ${{ env.DOCKER_IMAGE }} .
-          sudo docker save ${{ env.DOCKER_IMAGE }} > docker_image.tar
-
+          docker build -t stephenshenk/spring-petclinic:${{ github.sha }} .
 
       - name: Log in to DockerHub
-        run: echo "${{ secrets.DOCKER_PASSWORD }}" | sudo docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
       - name: Push Docker Image
-        run: sudo docker push ${{ env.DOCKER_IMAGE }}
+        run: docker push stephenshenk/spring-petclinic:${{ github.sha }}
