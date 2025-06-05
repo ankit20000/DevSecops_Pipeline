@@ -1,17 +1,7 @@
-name: Docker Image Build and Push
-
-on:
-  push:
-    branches:
-      - main
-
 jobs:
   image_push:
-    runs-on:
-      - self-hosted
-      - Linux
-      - X64
-      - dev
+    runs-on: self-hosted
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -19,18 +9,18 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
-          java-version: '17'
           distribution: 'temurin'
+          java-version: '17'
 
-      - name: Build project with Maven
-        run: mvn clean package -DskipTests
+      - name: Build the JAR
+        run: mvn clean package
 
       - name: Build Docker Image
         run: |
-          docker build -t stephenshenk/spring-petclinic:${{ github.sha }} .
+          docker build -t yourdockerhubusername/spring-petclinic:${{ github.sha }} .
 
       - name: Log in to DockerHub
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
       - name: Push Docker Image
-        run: docker push stephenshenk/spring-petclinic:${{ github.sha }}
+        run: docker push yourdockerhubusername/spring-petclinic:${{ github.sha }}
