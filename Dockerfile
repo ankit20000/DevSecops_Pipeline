@@ -1,11 +1,15 @@
-FROM openjdk:25-oracle
+# Use OpenJDK base image
+FROM openjdk:17-jdk-slim
 
-WORKDIR /home/petclinic/
+# Set working directory
+WORKDIR /app
 
-COPY ./target/spring-petclinic-3.2.0-SNAPSHOT.jar .
+# Copy the built JAR file into the image
+COPY target/spring-petclinic-3.2.0-SNAPSHOT.jar app.jar
 
-EXPOSE 8080
+# Expose the application port (Spring Boot default)
+EXPOSE 8081
 
-ENV MYSQL_URL=jdbc:mysql://petclinic-mysql:3306/petclinic
+# Run the application
+ENTRYPOINT ["java", "-jar", "app.jar"]
 
-CMD ["java", "-jar", "spring-petclinic-3.2.0-SNAPSHOT.jar"]
