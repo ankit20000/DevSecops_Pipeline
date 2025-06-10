@@ -6,12 +6,8 @@ on:
 
 jobs:
   sonar:
-    runs-on:
-      - self-hosted
-      - Linux
-      - X64
-      - dev
-    #needs: build  # Ensures Sonar runs after build succeeds
+    runs-on: self-hosted
+        #needs: build  # Ensures Sonar runs after build succeeds
     steps:
       - name: SonarCloud Scan
-        run: mvn sonar:sonar -Dsonar.projectKey=StephenShenk1_DevSecops_Pipeline -Dsonar.organization=stephenshenk1 -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=aff0c59b-92b3-47ed-a4ce-89061dd0ea75
+        run: mvn sonar:sonar -Dsonar.projectKey=StephenShenk1_DevSecops_Pipeline -Dsonar.organization=stephenshenk1 -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=e0b8ad4879934a703479bce6997ed05908012d09
