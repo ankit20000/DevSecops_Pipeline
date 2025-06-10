@@ -17,10 +17,10 @@ jobs:
 
       - name: Build Docker Image
         run: |
-          docker build -t stephenshenk/spring-petclinic:${{ github.sha }} .
+          docker build -t stephenshenk1/spring-petclinic:${{ github.sha }} .
 
       - name: Log in to DockerHub
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
       - name: Push Docker Image
-        run: docker push stephenshenk/spring-petclinic:${{ github.sha }}
+        run: docker push stephenshenk1/spring-petclinic:${{ github.sha }}
