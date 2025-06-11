@@ -6,7 +6,7 @@ on:
 
 jobs:
   test:
-    runs-on: self-hosted
+    runs-on: dev
      
     #needs: build  # Ensures test only runs after build succeeds
     steps:
