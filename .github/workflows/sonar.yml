@@ -6,7 +6,7 @@ on:
 
 jobs:
   sonar:
-    runs-on: self-hosted
+    runs-on: dev
         #needs: build  # Ensures Sonar runs after build succeeds
     steps:
       - name: SonarCloud Scan
