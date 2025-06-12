@@ -42,7 +42,7 @@ jobs:
         with:
           version: latest
         env:
-      master
+      
           JF_URL: https://trialxvcr8c.jfrog.io/
 
           JF_ACCESS_TOKEN: ${{ secrets.JFROG_TOKEN }}
