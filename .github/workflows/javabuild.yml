@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: java_build
+    runs-on: dev
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
@@ -36,13 +36,15 @@ jobs:
     #   - name: Configure JFrog CLI
     # token
     #     run: |
-    #         jfrog config add my-artifactory --url=https://trial42aeja.jfrog.io --apikey=${{ secrets.JFROG_TOKEN }}
+    #         jfrog config add my-artifactory --url=https://trialxvcr8c.jfrog.io/ --apikey=${{ secrets.JFROG_TOKEN }}
       - name: Configure JFrog CLI
         uses: jfrog/setup-jfrog-cli@v3
         with:
           version: latest
         env:
-          JF_URL: https://trialed2lwf.jfrog.io
+      
+          JF_URL: https://trialxvcr8c.jfrog.io/
+
           JF_ACCESS_TOKEN: ${{ secrets.JFROG_TOKEN }}
       - name: Upload JAR to JFrog
         run: |

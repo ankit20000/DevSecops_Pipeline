@@ -6,8 +6,8 @@ on:
 
 jobs:
   sonar:
-    runs-on: java_build
-    #needs: build  # Ensures Sonar runs after build succeeds
+    runs-on: dev
+        #needs: build  # Ensures Sonar runs after build succeeds
     steps:
       - name: SonarCloud Scan
-        run: mvn sonar:sonar -Dsonar.projectKey=ankit20000_DevSecops_Pipeline -Dsonar.organization=ankit20000 -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=3efd906389f89ff2f42493c5bda21481a0a75a68
+        run: mvn sonar:sonar -Dsonar.projectKey=StephenShenk1_DevSecops_Pipeline -Dsonar.organization=stephenshenk1 -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=e0b8ad4879934a703479bce6997ed05908012d09

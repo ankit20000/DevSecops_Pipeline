@@ -6,7 +6,8 @@ on:
 
 jobs:
   test:
-    runs-on: java_build
+    runs-on: dev
+     
     #needs: build  # Ensures test only runs after build succeeds
     steps:
       - name: Run Unit Tests
