@@ -1,9 +1,11 @@
 name: CI Pipeline
 on:
-  push:
-    branches:
-      - master 
-      - develop
+  workflow_dispatch:  # Manual trigger
+#on:
+  #push:
+    #branches:
+      #- master 
+      #- develop
       
 env:
         DOCKER_IMAGE: stephenshenk/spring-petclinic:${{ github.sha }}
