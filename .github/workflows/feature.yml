@@ -1,10 +1,10 @@
 name: CI Pipeline
 on:
   #workflow_dispatch:
-  push:
-    branches:
-      - master 
-      - develop
+  # push:
+  #   branches:
+  #     - master 
+  #     - develop
       
 env:
         DOCKER_IMAGE: ankit1111/petapp:${{ github.sha }}
