@@ -14,7 +14,6 @@ jobs:
       - name: Build Docker Image
         run: |
           sudo docker build -t ${{ env.DOCKER_IMAGE }} .
-          sudo docker save ${{ env.DOCKER_IMAGE }} > docker_image.tar
 
 
       - name: Log in to DockerHub
