@@ -1,0 +1,11 @@
+name: Testing the runner
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: java_build
+    steps:
+      - name: Testing the runner
+        run: echo "Testing the runner"

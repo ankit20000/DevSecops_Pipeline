@@ -6,9 +6,9 @@ on:
 
 jobs:
   image_push:
-    runs-on: java_build
+    runs-on: self-hosted
     env:
-      DOCKER_IMAGE: ankit1111/petapp:${{ github.sha }}
+      DOCKER_IMAGE: ajayyerukula/devsecopsrepo:${{ github.sha }}
 
     steps:
       - name: Build Docker Image
